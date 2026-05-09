@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Menú Digital — Heladería</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #ea1b74;
+    --dark: #2b2b2b;
+    --orange: #ea911b;
+    --coffee: #6b4a3f;
+    --lime: #9dea1b;
+    --yellow: #eacf1b;
+    --bread: #d68c45;
+    --gray: #afaeac;
+    --bg: #fffdfd;
+    --text: #1a1a1a;
+    --muted: #888;
+    --border: rgba(0,0,0,0.07);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--bg);
+    padding: 48px 24px 32px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(234,27,116,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .logo-ring {
+    width: 72px; height: 72px;
+    border: 2px solid var(--pink);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    position: relative;
+  }
+  .logo-ring svg { width: 36px; height: 36px; }
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    line-height: 1;
+  }
+  .brand-name span { color: var(--pink); }
+  .brand-tagline {
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+
+  /* NAV */
+  .nav-wrapper {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .nav-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 0;
+    padding: 0 16px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .nav-scroll::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    flex-shrink: 0;
+    padding: 14px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .nav-btn.active {
+    color: var(--text);
+    border-bottom-color: var(--cat-color);
+  }
+  .nav-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--cat-color);
+    margin-right: 6px;
+    vertical-align: middle;
+    margin-top: -2px;
+  }
+
+  /* SECTION */
+  .section { display: none; animation: fadeIn 0.3s ease; }
+  .section.active { display: block; }
+  @keyframes fadeIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
+
+  .section-header {
+    padding: 32px 24px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cat-color);
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .section-desc {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 6px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* PRODUCTS GRID */
+  .products { padding: 8px 0 32px; }
+
+  /* CARD */
+  .card {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: background 0.15s;
+    cursor: default;
+    position: relative;
+  }
+  .card:last-child { border-bottom: none; }
+  .card:active { background: rgba(0,0,0,0.02); }
+  .card-icon {
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 22px;
+    background: color-mix(in srgb, var(--cat-color) 12%, transparent);
+  }
+  .card-body { flex: 1; min-width: 0; }
+  .card-name {
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .card-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+  .card-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--cat-color);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .card-badge {
+    position: absolute;
+    top: 18px; right: 24px;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: color-mix(in srgb, var(--cat-color) 12%, transparent);
+    color: var(--cat-color);
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  /* DIVIDER */
+  .cat-divider {
+    padding: 8px 24px;
+    background: color-mix(in srgb, var(--cat-color) 6%, transparent);
+    border-bottom: 1px solid var(--border);
+  }
+  .cat-divider span {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--cat-color) 80%, #000 20%);
+    font-weight: 500;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--text);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  .footer strong { color: rgba(255,255,255,0.9); font-weight: 500; display: block; margin-bottom: 6px; font-size: 13px; }
+
+  /* RESPONSIVE FINE-TUNING */
+  @media (max-width: 380px) {
+    .brand-name { font-size: 24px; }
+    .card { padding: 16px 20px; }
+    .card-icon { width: 42px; height: 42px; font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo-ring">
+    <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18 4C18 4 10 10 10 18C10 22.4 13.6 26 18 26C22.4 26 26 22.4 26 18C26 10 18 4 18 4Z" fill="#ea1b74" opacity="0.15"/>
+      <path d="M18 6C18 6 12 11.5 12 18C12 21.3 14.7 24 18 24C21.3 24 24 21.3 24 18C24 11.5 18 6 18 6Z" stroke="#ea1b74" stroke-width="1.5" fill="none"/>
+      <path d="M15 26L17 32L18 30L19 32L21 26" stroke="#ea1b74" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="18" cy="16" r="2.5" fill="#ea1b74" opacity="0.6"/>
+    </svg>
+  </div>
+  <h1 class="brand-name">Hela<span>do</span>s &amp; Co.</h1>
+  <p class="brand-tagline">Experiencias heladas desde el primer sabor</p>
+</header>
+
+<!-- NAV -->
+<nav class="nav-wrapper">
+  <div class="nav-scroll" id="navScroll">
+    <button class="nav-btn active" onclick="showSection('helados',this)" style="--cat-color:#ea1b74">
+      <span class="nav-dot" style="background:#ea1b74"></span>Helados
+    </button>
+    <button class="nav-btn" onclick="showSection('especiales',this)" style="--cat-color:#2b2b2b">
+      <span class="nav-dot" style="background:#2b2b2b"></span>Especiales
+    </button>
+    <button class="nav-btn" onclick="showSection('fruteria',this)" style="--cat-color:#ea911b">
+      <span class="nav-dot" style="background:#ea911b"></span>Frutería
+    </button>
+    <button class="nav-btn" onclick="showSection('cafeteria',this)" style="--cat-color:#6b4a3f">
+      <span class="nav-dot" style="background:#6b4a3f"></span>Cafetería
+    </button>
+    <button class="nav-btn" onclick="showSection('granizados',this)" style="--cat-color:#7cc715">
+      <span class="nav-dot" style="background:#7cc715"></span>Granizados
+    </button>
+    <button class="nav-btn" onclick="showSection('sandwiches',this)" style="--cat-color:#c9af12">
+      <span class="nav-dot" style="background:#c9af12"></span>Sándwiches
+    </button>
+    <button class="nav-btn" onclick="showSection('panaderia',this)" style="--cat-color:#d68c45">
+      <span class="nav-dot" style="background:#d68c45"></span>Panadería
+    </button>
+    <button class="nav-btn" onclick="showSection('extras',this)" style="--cat-color:#888">
+      <span class="nav-dot" style="background:#888"></span>Extras
+    </button>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main>
+
+<!-- ═══════════════════ HELADOS ═══════════════════ -->
+<section id="helados" class="section active" style="--cat-color:#ea1b74">
+  <div class="section-header">
+    <span class="section-label">Nuestra especialidad</span>
+    <h2 class="section-title">Helados Clásicos</h2>
+    <p class="section-desc">Cremosos, intensos y elaborados con los mejores ingredientes. La experiencia que te enamoró.</p>
+  </div>
+  <div class="products">
+
+    <div class="cat-divider"><span>Copas</span></div>
+
+    <div class="card">
+      <div class="card-icon">🍨</div>
+      <div class="card-body">
+        <p class="card-name">Copa Clásica</p>
+        <p class="card-desc">Dos bolas de helado a elección, crema chantilly y topping de granola</p>
+      </div>
+      <span class="card-price">$2.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍦</div>
+      <div class="card-body">
+        <p class="card-name">Copa Triple</p>
+        <p class="card-desc">Tres sabores cremosos, salsa de chocolate y almendras tostadas</p>
+      </div>
+      <span class="card-price">$3.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍮</div>
+      <div class="card-body">
+        <p class="card-name">Copa Brownie</p>
+        <p class="card-desc">Brownie caliente, helado de vainilla, caramelo y nueces</p>
+      </div>
+      <span class="card-price">$4.00</span>
+    </div>
+
+    <div class="cat-divider"><span>Conos</span></div>
+
+    <div class="card">
+      <div class="card-icon">🍦</div>
+      <div class="card-body">
+        <p class="card-name">Cono Sencillo</p>
+        <p class="card-desc">Una bola de tu sabor favorito en cono crujiente</p>
+      </div>
+      <span class="card-price">$1.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍦</div>
+      <div class="card-body">
+        <p class="card-name">Cono Doble</p>
+        <p class="card-desc">Dos bolas con cono de barquillo artesanal</p>
+      </div>
+      <span class="card-price">$2.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🧁</div>
+      <div class="card-body">
+        <p class="card-name">Cono Decorado</p>
+        <p class="card-desc">Cono bañado en chocolate, una bola y sprinkles de colores</p>
+      </div>
+      <span class="card-price">$2.75</span>
+    </div>
+
+    <div class="cat-divider"><span>Vasos</span></div>
+
+    <div class="card">
+      <div class="card-icon">🥤</div>
+      <div class="card-body">
+        <p class="card-name">Vaso Sencillo</p>
+        <p class="card-desc">Una porción generosa de helado a tu gusto</p>
+      </div>
+      <span class="card-price">$1.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥤</div>
+      <div class="card-body">
+        <p class="card-name">Vaso Doble</p>
+        <p class="card-desc">Doble porción, ideal para compartir o darse un gusto mayor</p>
+      </div>
+      <span class="card-price">$2.00</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍓</div>
+      <div class="card-body">
+        <p class="card-name">Vaso con Topping</p>
+        <p class="card-desc">Tu helado favorito acompañado de frutas frescas de temporada</p>
+      </div>
+      <span class="card-price">$2.50</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ ESPECIALES ═══════════════════ -->
+<section id="especiales" class="section" style="--cat-color:#2b2b2b">
+  <div class="section-header">
+    <span class="section-label">Exclusivo de la casa</span>
+    <h2 class="section-title">Creaciones Especiales</h2>
+    <p class="section-desc">Postres elaborados con técnica y pasión. Cada copa es una experiencia única que no encontrarás en otro lugar.</p>
+  </div>
+  <div class="products">
+
+    <div class="cat-divider"><span>Copas Gourmet</span></div>
+
+    <div class="card">
+      <div class="card-icon">🍫</div>
+      <div class="card-body">
+        <p class="card-name">Black &amp; White</p>
+        <p class="card-desc">Helado de oreo, salsa de chocolate negro y crema de vainilla francesa</p>
+      </div>
+      <span class="card-badge">Firma</span>
+      <span class="card-price">$5.00</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍒</div>
+      <div class="card-body">
+        <p class="card-name">Sundae Rojo</p>
+        <p class="card-desc">Helado de frutilla, coulis de cereza, merengue y pistachos</p>
+      </div>
+      <span class="card-price">$4.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥜</div>
+      <div class="card-body">
+        <p class="card-name">Copa Nutella</p>
+        <p class="card-desc">Helado de avellana, nutella caliente, galleta oreo triturada y avellanas</p>
+      </div>
+      <span class="card-badge">Top</span>
+      <span class="card-price">$5.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍋</div>
+      <div class="card-body">
+        <p class="card-name">Limón al Jengibre</p>
+        <p class="card-desc">Sorbete de limón, espuma de jengibre y menta fresca sobre cama de galleta</p>
+      </div>
+      <span class="card-price">$4.50</span>
+    </div>
+
+    <div class="cat-divider"><span>Postres Elaborados</span></div>
+
+    <div class="card">
+      <div class="card-icon">🎂</div>
+      <div class="card-body">
+        <p class="card-name">Parfait de la Casa</p>
+        <p class="card-desc">Capas de helado, bizcocho, gelatina de maracuyá y crema diplomática</p>
+      </div>
+      <span class="card-badge">Chef</span>
+      <span class="card-price">$6.00</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍰</div>
+      <div class="card-body">
+        <p class="card-name">Volcán Helado</p>
+        <p class="card-desc">Bizcocho de chocolate con helado de vainilla, sirope y almendras fileteadas</p>
+      </div>
+      <span class="card-price">$5.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌹</div>
+      <div class="card-body">
+        <p class="card-name">Rosa de Guayaba</p>
+        <p class="card-desc">Helado artesanal de guayaba, gelatina rosada, leche condensada y coco rallado</p>
+      </div>
+      <span class="card-price">$4.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🫐</div>
+      <div class="card-body">
+        <p class="card-name">Bosque Negro</p>
+        <p class="card-desc">Helado de mora silvestre, salsa de arándanos, crumble de galleta negra</p>
+      </div>
+      <span class="card-badge">New</span>
+      <span class="card-price">$5.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥭</div>
+      <div class="card-body">
+        <p class="card-name">Trópico Fusion</p>
+        <p class="card-desc">Sorbetes de mango, maracuyá y coco con chips de coco tostado</p>
+      </div>
+      <span class="card-price">$5.00</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ FRUTERÍA ═══════════════════ -->
+<section id="fruteria" class="section" style="--cat-color:#ea911b">
+  <div class="section-header">
+    <span class="section-label">Frescura natural</span>
+    <h2 class="section-title">Frutería</h2>
+    <p class="section-desc">Lo mejor de la naturaleza en tu mesa. Frutas seleccionadas, frescas y con la presentación que mereces.</p>
+  </div>
+  <div class="products">
+
+    <div class="card">
+      <div class="card-icon">🍓</div>
+      <div class="card-body">
+        <p class="card-name">Ensalada de Fruta</p>
+        <p class="card-desc">Mix de frutas frescas de temporada, jugo de naranja natural y menta</p>
+      </div>
+      <span class="card-price">$2.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍌</div>
+      <div class="card-body">
+        <p class="card-name">Banana Split</p>
+        <p class="card-desc">Plátano fresco, tres bolas de helado, crema, chocolate y fresa</p>
+      </div>
+      <span class="card-badge">Clásico</span>
+      <span class="card-price">$4.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍍</div>
+      <div class="card-body">
+        <p class="card-name">Copa Tropical</p>
+        <p class="card-desc">Piña, mango y papaya con leche condensada y coco rallado tostado</p>
+      </div>
+      <span class="card-price">$3.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🫐</div>
+      <div class="card-body">
+        <p class="card-name">Berries con Crema</p>
+        <p class="card-desc">Fresas, moras y arándanos con crema chantilly y granola crujiente</p>
+      </div>
+      <span class="card-price">$3.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥝</div>
+      <div class="card-body">
+        <p class="card-name">Fruta con Helado</p>
+        <p class="card-desc">Tu fruta favorita servida sobre una bola de helado de nata o vainilla</p>
+      </div>
+      <span class="card-price">$3.00</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ CAFETERÍA ═══════════════════ -->
+<section id="cafeteria" class="section" style="--cat-color:#6b4a3f">
+  <div class="section-header">
+    <span class="section-label">Café de especialidad</span>
+    <h2 class="section-title">Cafetería</h2>
+    <p class="section-desc">Granos seleccionados, técnica precisa y ese aroma que hace que el día valga la pena.</p>
+  </div>
+  <div class="products">
+
+    <div class="cat-divider"><span>Espressos</span></div>
+
+    <div class="card">
+      <div class="card-icon">☕</div>
+      <div class="card-body">
+        <p class="card-name">Espresso</p>
+        <p class="card-desc">Solo, puro e intenso. La base de todo gran café</p>
+      </div>
+      <span class="card-price">$1.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">☕</div>
+      <div class="card-body">
+        <p class="card-name">Espresso Doble</p>
+        <p class="card-desc">Doble shot para los amantes del café intenso</p>
+      </div>
+      <span class="card-price">$1.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍵</div>
+      <div class="card-body">
+        <p class="card-name">Americano</p>
+        <p class="card-desc">Espresso diluido con agua caliente, suave y aromático</p>
+      </div>
+      <span class="card-price">$1.50</span>
+    </div>
+
+    <div class="cat-divider"><span>Con Leche</span></div>
+
+    <div class="card">
+      <div class="card-icon">🥛</div>
+      <div class="card-body">
+        <p class="card-name">Café con Leche</p>
+        <p class="card-desc">Espresso con leche entera vaporizada al punto perfecto</p>
+      </div>
+      <span class="card-price">$1.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">☕</div>
+      <div class="card-body">
+        <p class="card-name">Cappuccino</p>
+        <p class="card-desc">Espresso, leche vaporizada y espuma densa. El clásico italiano</p>
+      </div>
+      <span class="card-badge">Popular</span>
+      <span class="card-price">$2.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍶</div>
+      <div class="card-body">
+        <p class="card-name">Latte</p>
+        <p class="card-desc">Espresso con abundante leche vaporizada y latte art</p>
+      </div>
+      <span class="card-price">$2.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍫</div>
+      <div class="card-body">
+        <p class="card-name">Mocca</p>
+        <p class="card-desc">Espresso con chocolate caliente, leche vaporizada y crema</p>
+      </div>
+      <span class="card-price">$2.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <div class="card-body">
+        <p class="card-name">Matcha Latte</p>
+        <p class="card-desc">Matcha ceremonial japonés con leche de avena vaporizada</p>
+      </div>
+      <span class="card-badge">Nuevo</span>
+      <span class="card-price">$3.00</span>
+    </div>
+
+    <div class="cat-divider"><span>Fríos</span></div>
+
+    <div class="card">
+      <div class="card-icon">🧊</div>
+      <div class="card-body">
+        <p class="card-name">Cold Brew</p>
+        <p class="card-desc">Café extractado en frío durante 12 horas. Suave y concentrado</p>
+      </div>
+      <span class="card-price">$2.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🧊</div>
+      <div class="card-body">
+        <p class="card-name">Iced Latte</p>
+        <p class="card-desc">Espresso sobre hielo con leche fría. Refrescante y elegante</p>
+      </div>
+      <span class="card-price">$2.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🧊</div>
+      <div class="card-body">
+        <p class="card-name">Iced Mocca</p>
+        <p class="card-desc">Espresso, chocolate, hielo y leche. Dulce y refrescante</p>
+      </div>
+      <span class="card-price">$2.75</span>
+    </div>
+
+    <div class="cat-divider"><span>Bebidas Calientes</span></div>
+
+    <div class="card">
+      <div class="card-icon">🍵</div>
+      <div class="card-body">
+        <p class="card-name">Chocolate Caliente</p>
+        <p class="card-desc">Chocolate belga derretido con leche entera y canela</p>
+      </div>
+      <span class="card-price">$2.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🫖</div>
+      <div class="card-body">
+        <p class="card-name">Té Negro</p>
+        <p class="card-desc">Selección de tés premium. English Breakfast, Earl Grey o Darjeeling</p>
+      </div>
+      <span class="card-price">$1.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <div class="card-body">
+        <p class="card-name">Té de Hierbas</p>
+        <p class="card-desc">Manzanilla, menta o jengibre con limón. Natural y relajante</p>
+      </div>
+      <span class="card-price">$1.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥜</div>
+      <div class="card-body">
+        <p class="card-name">Chai Latte</p>
+        <p class="card-desc">Especias indias, té negro y leche vaporizada. Cálido y especiado</p>
+      </div>
+      <span class="card-price">$2.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">☕</div>
+      <div class="card-body">
+        <p class="card-name">Flat White</p>
+        <p class="card-desc">Doble espresso ristretto con microespuma de leche entera</p>
+      </div>
+      <span class="card-price">$2.50</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ GRANIZADOS ═══════════════════ -->
+<section id="granizados" class="section" style="--cat-color:#7cc715">
+  <div class="section-header">
+    <span class="section-label">Refrescantes</span>
+    <h2 class="section-title">Granizados</h2>
+    <p class="section-desc">Fríos, coloridos y perfectos para el calor. Puro sabor en cada sorbo.</p>
+  </div>
+  <div class="products">
+
+    <div class="card">
+      <div class="card-icon">🧊</div>
+      <div class="card-body">
+        <p class="card-name">Granizado Natural</p>
+        <p class="card-desc">Hielo triturado con sirope artesanal de frutas naturales. Sin colorantes</p>
+      </div>
+      <span class="card-price">$1.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍋</div>
+      <div class="card-body">
+        <p class="card-name">Granizado de Limonada</p>
+        <p class="card-desc">Limón fresco, menta y hielo triturado. Refrescante y ácido</p>
+      </div>
+      <span class="card-badge">Top</span>
+      <span class="card-price">$1.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍓</div>
+      <div class="card-body">
+        <p class="card-name">Granizado Especial</p>
+        <p class="card-desc">Hielo con sabores mixtos, leche condensada y frutas frescas</p>
+      </div>
+      <span class="card-price">$2.25</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ SÁNDWICHES ═══════════════════ -->
+<section id="sandwiches" class="section" style="--cat-color:#c9af12">
+  <div class="section-header">
+    <span class="section-label">Salado premium</span>
+    <h2 class="section-title">Sándwiches</h2>
+    <p class="section-desc">Rellenos generosos, pan artesanal y sabores que no decepcionan. Perfectos para acompañar tu café.</p>
+  </div>
+  <div class="products">
+
+    <div class="card">
+      <div class="card-icon">🥪</div>
+      <div class="card-body">
+        <p class="card-name">Sándwich de Jamón y Queso</p>
+        <p class="card-desc">Pan artesanal, jamón ahumado, queso gouda y mostaza dijon</p>
+      </div>
+      <span class="card-price">$2.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥪</div>
+      <div class="card-body">
+        <p class="card-name">Sándwich Club</p>
+        <p class="card-desc">Triple capa con pollo, tocino, lechuga, tomate y mayonesa casera</p>
+      </div>
+      <span class="card-badge">Popular</span>
+      <span class="card-price">$3.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥑</div>
+      <div class="card-body">
+        <p class="card-name">Sándwich Veggie</p>
+        <p class="card-desc">Aguacate, queso crema, espinacas y tomate cherry en pan integral</p>
+      </div>
+      <span class="card-price">$3.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🧀</div>
+      <div class="card-body">
+        <p class="card-name">Tostado de Queso</p>
+        <p class="card-desc">Mezcla de tres quesos fundidos en pan de masa madre artesanal</p>
+      </div>
+      <span class="card-price">$2.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍗</div>
+      <div class="card-body">
+        <p class="card-name">Sándwich de Pollo</p>
+        <p class="card-desc">Pollo a la plancha, cebolla caramelizada, lechuga y salsa especial</p>
+      </div>
+      <span class="card-price">$3.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥩</div>
+      <div class="card-body">
+        <p class="card-name">Sándwich Mixto Caliente</p>
+        <p class="card-desc">Jamón, queso y mortadela fundidos en plancha con orégano</p>
+      </div>
+      <span class="card-price">$2.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <div class="card-body">
+        <p class="card-name">Sándwich Caprese</p>
+        <p class="card-desc">Mozzarella fresca, tomate, albahaca y aceite de oliva en ciabatta</p>
+      </div>
+      <span class="card-badge">Nuevo</span>
+      <span class="card-price">$3.75</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ PANADERÍA ═══════════════════ -->
+<section id="panaderia" class="section" style="--cat-color:#d68c45">
+  <div class="section-header">
+    <span class="section-label">Recién horneado</span>
+    <h2 class="section-title">Panadería</h2>
+    <p class="section-desc">El aroma de lo recién hecho. Preparaciones artesanales con recetas que pasan de generación en generación.</p>
+  </div>
+  <div class="products">
+
+    <div class="card">
+      <div class="card-icon">🫓</div>
+      <div class="card-body">
+        <p class="card-name">Pan del Día</p>
+        <p class="card-desc">Pan artesanal recién horneado. Corteza crujiente, miga suave</p>
+      </div>
+      <span class="card-price">$0.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🧀</div>
+      <div class="card-body">
+        <p class="card-name">Quesadilla</p>
+        <p class="card-desc">Masa de maíz artesanal con queso fundido y hierbas frescas</p>
+      </div>
+      <span class="card-badge">Favorito</span>
+      <span class="card-price">$1.00</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥐</div>
+      <div class="card-body">
+        <p class="card-name">Croissant Mantequilla</p>
+        <p class="card-desc">Hojaldre laminado a mano con mantequilla europea. Dorado y crujiente</p>
+      </div>
+      <span class="card-price">$1.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥟</div>
+      <div class="card-body">
+        <p class="card-name">Empanada</p>
+        <p class="card-desc">Masa artesanal rellena de queso, carne o espinacas. Horneada al momento</p>
+      </div>
+      <span class="card-price">$1.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍞</div>
+      <div class="card-body">
+        <p class="card-name">Pan de Yuca</p>
+        <p class="card-desc">Tradicional ecuatoriano, esponjoso y con queso. Receta de la abuela</p>
+      </div>
+      <span class="card-price">$0.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥐</div>
+      <div class="card-body">
+        <p class="card-name">Croissant de Jamón y Queso</p>
+        <p class="card-desc">Croissant hojaldrado relleno con jamón ahumado y queso derretido</p>
+      </div>
+      <span class="card-price">$2.00</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ EXTRAS ═══════════════════ -->
+<section id="extras" class="section" style="--cat-color:#888">
+  <div class="section-header">
+    <span class="section-label">Complementos</span>
+    <h2 class="section-title">Extras &amp; Adicionales</h2>
+    <p class="section-desc">Los pequeños detalles que hacen grande tu pedido. Personaliza tu experiencia con nuestros toppings y complementos.</p>
+  </div>
+  <div class="products">
+
+    <div class="cat-divider"><span>Toppings</span></div>
+
+    <div class="card">
+      <div class="card-icon">🍫</div>
+      <div class="card-body">
+        <p class="card-name">Chocolate Rallado</p>
+        <p class="card-desc">Chocolate belga negro o con leche, rallado fino</p>
+      </div>
+      <span class="card-price">$0.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥜</div>
+      <div class="card-body">
+        <p class="card-name">Granola</p>
+        <p class="card-desc">Granola artesanal con avena, miel y frutos secos tostados</p>
+      </div>
+      <span class="card-price">$0.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌰</div>
+      <div class="card-body">
+        <p class="card-name">Nueces Tostadas</p>
+        <p class="card-desc">Nueces y almendras tostadas ligeramente saladas</p>
+      </div>
+      <span class="card-price">$0.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍭</div>
+      <div class="card-body">
+        <p class="card-name">Sprinkles</p>
+        <p class="card-desc">Confites de colores para decorar tu helado o postre</p>
+      </div>
+      <span class="card-price">$0.15</span>
+    </div>
+
+    <div class="cat-divider"><span>Salsas</span></div>
+
+    <div class="card">
+      <div class="card-icon">🍯</div>
+      <div class="card-body">
+        <p class="card-name">Caramelo</p>
+        <p class="card-desc">Salsa de caramelo casera, suave y mantecosa</p>
+      </div>
+      <span class="card-price">$0.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍫</div>
+      <div class="card-body">
+        <p class="card-name">Chocolate Caliente</p>
+        <p class="card-desc">Sirope de chocolate intenso para cobertura</p>
+      </div>
+      <span class="card-price">$0.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍓</div>
+      <div class="card-body">
+        <p class="card-name">Coulis de Fresa</p>
+        <p class="card-desc">Salsa de fresa natural, ligeramente ácida y muy aromática</p>
+      </div>
+      <span class="card-price">$0.25</span>
+    </div>
+
+    <div class="cat-divider"><span>Pequeños Antojos</span></div>
+
+    <div class="card">
+      <div class="card-icon">🍬</div>
+      <div class="card-body">
+        <p class="card-name">Chicles Surtidos</p>
+        <p class="card-desc">Variedad de chicles en sabores frutales</p>
+      </div>
+      <span class="card-price">$0.10</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍭</div>
+      <div class="card-body">
+        <p class="card-name">Suspiros</p>
+        <p class="card-desc">Merengue artesanal en colores pastel. Ligeros y dulces</p>
+      </div>
+      <span class="card-price">$0.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍪</div>
+      <div class="card-body">
+        <p class="card-name">Galleta del Día</p>
+        <p class="card-desc">Galleta artesanal horneada en casa. Sabor varía según el día</p>
+      </div>
+      <span class="card-price">$0.50</span>
+    </div>
+
+    <div class="cat-divider"><span>Cremas</span></div>
+
+    <div class="card">
+      <div class="card-icon">🥛</div>
+      <div class="card-body">
+        <p class="card-name">Crema Chantilly</p>
+        <p class="card-desc">Crema batida natural, suave y apenas dulce</p>
+      </div>
+      <span class="card-price">$0.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🫙</div>
+      <div class="card-body">
+        <p class="card-name">Leche Condensada</p>
+        <p class="card-desc">Leche condensada para añadir dulzura extra a cualquier postre</p>
+      </div>
+      <span class="card-price">$0.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥥</div>
+      <div class="card-body">
+        <p class="card-name">Coco Rallado</p>
+        <p class="card-desc">Coco tostado rallado para un toque tropical</p>
+      </div>
+      <span class="card-price">$0.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍦</div>
+      <div class="card-body">
+        <p class="card-name">Bola Extra de Helado</p>
+        <p class="card-desc">Añade una bola adicional a cualquier pedido</p>
+      </div>
+      <span class="card-price">$0.75</span>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <strong>Helados &amp; Co.</strong>
+  Gracias por visitarnos · Precios incluyen impuestos
+  <br><br>
+  <span style="color:rgba(255,255,255,0.3);font-size:10px;">Menú sujeto a cambios sin previo aviso</span>
+</footer>
+
+<script>
+  function showSection(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    window.scrollTo({ top: document.querySelector('.nav-wrapper').offsetTop - 1, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
