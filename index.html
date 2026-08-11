@@ -1,401 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Menú Digital — Heladería</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --pink: #ea1b74;
-    --dark: #2b2b2b;
-    --orange: #ea911b;
-    --coffee: #6b4a3f;
-    --lime: #9dea1b;
-    --yellow: #eacf1b;
-    --bread: #d68c45;
-    --gray: #afaeac;
-    --bg: #fffdfd;
-    --text: #1a1a1a;
-    --muted: #888;
-    --border: rgba(0,0,0,0.07);
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    font-family: 'DM Sans', sans-serif;
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* HEADER */
-
-
-/* HEADER */
-.header {
-  background: var(--pink);
-  padding: 48px 24px 28px;
-  text-align: center;
-  border-bottom: 1px solid var(--border);
-  position: relative;
-  overflow: hidden;
-
-  transition:
-    padding 0.45s ease,
-    background 0.45s ease;
-}
-
-/* EFECTO ROSADO */
-.header::before {
-  content: '';
-  position: absolute;
-  top: -60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(234,27,116,0.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-/* CONTENIDO PRINCIPAL */
-.header-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-
-  position: relative;
-  z-index: 2;
-
-  transition: all 0.45s ease;
-}
-
-/* LOGO */
-.logo-ring {
-  will-change: transform;
-  width: 140px;
-  height: 140px;
-  border: 2px solid var(--pink);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-
-  transition:
-    width 0.45s ease,
-    height 0.45s ease,
-    transform 0.45s ease;
-}
-
-.logo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-/* TEXTOS */
-.header-texts {
-  transition: all 0.45s ease;
-}
-
-.brand-name {
-  will-change: transform;
-  font-family: 'Playfair Display', serif;
-  font-size: 34px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-  color: var(--bg);
-  line-height: 1;
-
-  transition: all 0.45s ease;
-}
-
-.brand-subtitle {
-  will-change: transform;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--bg);
-  margin-top: 8px;
-
-  transition: all 0.45s ease;
-}
-
-.brand-tagline {
-  font-size: 13px;
-  font-weight: 300;
-  letter-spacing: 1px;
-  color: var(--bg);
-  margin-top: 18px;
-
-  position: relative;
-  z-index: 2;
-
-  transition:
-    opacity 0.45s ease,
-    transform 0.45s ease,
-    margin 0.45s ease,
-    font-size 0.45s ease;
-}
-
-/* NAV */
-.nav-wrapper {
-  position: relative;
-  z-index: 100;
-  background: rgba(255,255,255,0.85);
-  border-bottom: 1px solid var(--border);
-
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-}
-
-.nav-scroll {
-  display: flex;
-  overflow-x: auto;
-  gap: 0;
-  padding: 0 16px;
-
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.nav-scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.nav-btn {
-  flex-shrink: 0;
-  padding: 14px 16px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  color: var(--muted);
-  border-bottom: 2px solid transparent;
-  transition: all 0.2s;
-  white-space: nowrap;
-  font-family: 'DM Sans', sans-serif;
-}
-
-.nav-btn.active {
-  color: var(--text);
-  border-bottom-color: var(--cat-color);
-}
-
-.nav-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--cat-color);
-  margin-right: 6px;
-  vertical-align: middle;
-  margin-top: -2px;
-}
-
-
-  /* SECTION */
-  .section { display: none; animation: fadeIn 0.3s ease; }
-  .section.active { display: block; }
-  @keyframes fadeIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
-
-  .section-header {
-    padding: 32px 24px 20px;
-    border-bottom: 1px solid var(--border);
-  }
-  .section-label {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--cat-color);
-    font-weight: 500;
-    margin-bottom: 6px;
-    display: block;
-  }
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.2;
-  }
-  .section-desc {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 6px;
-    font-weight: 300;
-    line-height: 1.5;
-  }
-
-  /* PRODUCTS GRID */
-  .products { padding: 8px 0 32px; }
-
-  /* CARD */
-  .card {
-    padding: 20px 24px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    transition: background 0.15s;
-    cursor: default;
-    position: relative;
-  }
-  .card:last-child { border-bottom: none; }
-  .card:active { background: rgba(0,0,0,0.02); }
-  .card-icon {
-    width: 48px; height: 48px;
-    border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    font-size: 22px;
-    background: color-mix(in srgb, var(--cat-color) 12%, transparent);
-  }
-  .card-body { flex: 1; min-width: 0; }
-  .card-name {
-    font-weight: 500;
-    font-size: 15px;
-    color: var(--text);
-    line-height: 1.3;
-    margin-bottom: 4px;
-  }
-  .card-desc {
-    font-size: 12.5px;
-    color: var(--muted);
-    line-height: 1.5;
-    font-weight: 300;
-  }
-  .card-price {
-    font-family: 'Playfair Display', serif;
-    font-size: 17px;
-    font-weight: 500;
-    color: var(--cat-color);
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .card-badge {
-    position: absolute;
-    top: 18px; right: 24px;
-    font-size: 9px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    background: color-mix(in srgb, var(--cat-color) 12%, transparent);
-    color: var(--cat-color);
-    padding: 3px 8px;
-    border-radius: 20px;
-    font-weight: 500;
-  }
-
-  /* DIVIDER */
-.cat-divider {
-    padding: 8px 24px;
-    background: color-mix(in srgb, var(--cat-color) 6%, transparent);
-    border-bottom: 1px solid var(--border);
-    text-align: center;  /* centra el contenido inline/inline-block */
-}
-
-.cat-divider span {
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: color-mix(in srgb, var(--cat-color) 80%, #000 20%);
-    font-weight: 500;
-}
-
-  /* FOOTER */
-  .footer {
-    background: var(--text);
-    color: rgba(255,255,255,0.5);
-    text-align: center;
-    padding: 32px 24px;
-    font-size: 11px;
-    letter-spacing: 1px;
-  }
-  .footer strong { color: rgba(255,255,255,0.9); font-weight: 500; display: block; margin-bottom: 6px; font-size: 13px; }
-
-  /* RESPONSIVE FINE-TUNING */
-  @media (max-width: 380px) {
-    .brand-name { font-size: 24px; }
-    .card { padding: 16px 20px; }
-    .card-icon { width: 42px; height: 42px; font-size: 20px; }
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e91e72">
+  <meta name="description" content="Menú digital de Heladería Rosinelda: helados, cafetería, frutería y más.">
+  <title>Rosinelda | Menú digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#menu-content">Saltar al menú</a>
 
-<!-- TOP BAR -->
-<div class="top-bar" id="topBar">
+  <div class="top-bar" id="topBar">
+    <header class="site-header">
+      <a class="brand" href="#helados" aria-label="Ir al inicio del menú Rosinelda">
+        <span class="logo-shell" aria-hidden="true">
+          <img id="brandLogo" src="assets/logo/Rosinelda-original.png" alt="" width="64" height="64">
+          <span class="logo-fallback">R</span>
+        </span>
+        <span class="brand-text">
+          <strong class="brand-name">Rosinelda</strong>
+          <span class="brand-subtitle">Heladería · Frutería · Cafetería</span>
+        </span>
+      </a>
+      <p class="brand-tagline">El placer de saborear</p>
+    </header>
 
-  <header class="header" id="header">
-
-    <div class="header-main">
-
-      <div class="logo-ring">
-        <img src="Rosinelda-original.png" alt="Logo Rosinelda" class="logo-img">
+    <nav class="nav-wrapper" aria-label="Categorías del menú">
+      <div class="nav-scroll" role="tablist" aria-label="Categorías">
+        <a class="nav-btn active" href="#helados" data-category="helados" role="tab" aria-selected="true"><span class="nav-dot" aria-hidden="true"></span>Heladería</a>
+        <a class="nav-btn" href="#especiales" data-category="especiales" role="tab" aria-selected="false"><span class="nav-dot" aria-hidden="true"></span>Especiales</a>
+        <a class="nav-btn" href="#fruteria" data-category="fruteria" role="tab" aria-selected="false"><span class="nav-dot" aria-hidden="true"></span>Frutería</a>
+        <a class="nav-btn" href="#cafeteria" data-category="cafeteria" role="tab" aria-selected="false"><span class="nav-dot" aria-hidden="true"></span>Cafetería</a>
+        <a class="nav-btn" href="#granizados" data-category="granizados" role="tab" aria-selected="false"><span class="nav-dot" aria-hidden="true"></span>Granizados</a>
+        <a class="nav-btn" href="#sandwiches" data-category="sandwiches" role="tab" aria-selected="false"><span class="nav-dot" aria-hidden="true"></span>Sándwiches</a>
+        <a class="nav-btn" href="#panaderia" data-category="panaderia" role="tab" aria-selected="false"><span class="nav-dot" aria-hidden="true"></span>Panadería</a>
+        <a class="nav-btn" href="#extras" data-category="extras" role="tab" aria-selected="false"><span class="nav-dot" aria-hidden="true"></span>Extras</a>
       </div>
+    </nav>
+  </div>
 
-      <div class="header-texts">
-        <h1 class="brand-name">Menú</h1>
-
-        <p class="brand-subtitle">
-          HELADERÍA ● FRUTERÍA ● CAFETERÍA
-        </p>
-      </div>
-
+  <section class="menu-tools" aria-label="Buscar y filtrar productos">
+    <div class="tools-inner">
+      <label class="search-field" for="menuSearch">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <span class="sr-only">Buscar en el menú</span>
+        <input id="menuSearch" type="search" placeholder="Buscar en el menú..." autocomplete="off">
+        <button class="clear-search" id="clearSearch" type="button" aria-label="Limpiar búsqueda" hidden>×</button>
+      </label>
+      <button class="featured-filter" id="featuredFilter" type="button" aria-pressed="false">Destacados</button>
     </div>
+    <p class="search-summary" id="searchSummary" aria-live="polite"></p>
+  </section>
 
-    <p class="brand-tagline">
-      El placer de saborear
-    </p>
-
-  </header>
-
-  <!-- NAV -->
-  <nav class="nav-wrapper">
-
-  <nav class="nav-wrapper">
-  <div class="nav-scroll" id="navScroll">
-    <button class="nav-btn active" onclick="showSection('helados',this)" style="--cat-color:#ea1b74">
-      <span class="nav-dot" style="background:#ea1b74"></span>Heladería
-    </button>
-    <button class="nav-btn" onclick="showSection('especiales',this)" style="--cat-color:#2b2b2b">
-      <span class="nav-dot" style="background:#2b2b2b"></span>Especiales
-    </button>
-    <button class="nav-btn" onclick="showSection('fruteria',this)" style="--cat-color:#ea911b">
-      <span class="nav-dot" style="background:#ea911b"></span>Frutería
-    </button>
-    <button class="nav-btn" onclick="showSection('cafeteria',this)" style="--cat-color:#6b4a3f">
-      <span class="nav-dot" style="background:#6b4a3f"></span>Cafetería
-    </button>
-    <button class="nav-btn" onclick="showSection('granizados',this)" style="--cat-color:#7cc715">
-      <span class="nav-dot" style="background:#7cc715"></span>Granizados
-    </button>
-    <button class="nav-btn" onclick="showSection('sandwiches',this)" style="--cat-color:#c9af12">
-      <span class="nav-dot" style="background:#c9af12"></span>Sándwiches
-    </button>
-    <button class="nav-btn" onclick="showSection('panaderia',this)" style="--cat-color:#d68c45">
-      <span class="nav-dot" style="background:#d68c45"></span>Panadería
-    </button>
-    <button class="nav-btn" onclick="showSection('extras',this)" style="--cat-color:#888">
-      <span class="nav-dot" style="background:#888"></span>Extras
-    </button>
-  </nav>
-</div>  
-
-<!-- MAIN CONTENT -->
-<main>
+  <main id="menu-content">
 
 <!-- ═══════════════════ HELADOS ═══════════════════ -->
-<section id="helados" class="section active" style="--cat-color:#ea1b74">
+<section id="helados" class="section active" data-category="helados">
   <div class="section-header">
     <span class="section-label">Nuestra especialidad</span>
     <h2 class="section-title">Helados Clásicos</h2>
@@ -494,7 +158,7 @@
 </section>
 
 <!-- ═══════════════════ ESPECIALES ═══════════════════ -->
-<section id="especiales" class="section" style="--cat-color:#2b2b2b">
+<section id="especiales" class="section" data-category="especiales">
   <div class="section-header">
     <span class="section-label">Exclusivo de la casa</span>
     <h2 class="section-title">Creaciones Especiales</h2>
@@ -604,7 +268,7 @@
 </section>
 
 <!-- ═══════════════════ FRUTERÍA ═══════════════════ -->
-<section id="fruteria" class="section" style="--cat-color:#ea911b">
+<section id="fruteria" class="section" data-category="fruteria">
   <div class="section-header">
     <span class="section-label">Frescura natural</span>
     <h2 class="section-title">Frutería</h2>
@@ -662,7 +326,7 @@
 </section>
 
 <!-- ═══════════════════ CAFETERÍA ═══════════════════ -->
-<section id="cafeteria" class="section" style="--cat-color:#6b4a3f">
+<section id="cafeteria" class="section" data-category="cafeteria">
   <div class="section-header">
     <span class="section-label">Café de especialidad</span>
     <h2 class="section-title">Cafetería</h2>
@@ -819,7 +483,7 @@
 </section>
 
 <!-- ═══════════════════ GRANIZADOS ═══════════════════ -->
-<section id="granizados" class="section" style="--cat-color:#7cc715">
+<section id="granizados" class="section" data-category="granizados">
   <div class="section-header">
     <span class="section-label">Refrescantes</span>
     <h2 class="section-title">Granizados</h2>
@@ -859,7 +523,7 @@
 </section>
 
 <!-- ═══════════════════ SÁNDWICHES ═══════════════════ -->
-<section id="sandwiches" class="section" style="--cat-color:#c9af12">
+<section id="sandwiches" class="section" data-category="sandwiches">
   <div class="section-header">
     <span class="section-label">Salado premium</span>
     <h2 class="section-title">Sándwiches</h2>
@@ -936,7 +600,7 @@
 </section>
 
 <!-- ═══════════════════ PANADERÍA ═══════════════════ -->
-<section id="panaderia" class="section" style="--cat-color:#d68c45">
+<section id="panaderia" class="section" data-category="panaderia">
   <div class="section-header">
     <span class="section-label">Recién horneado</span>
     <h2 class="section-title">Panadería</h2>
@@ -1003,7 +667,7 @@
 </section>
 
 <!-- ═══════════════════ EXTRAS ═══════════════════ -->
-<section id="extras" class="section" style="--cat-color:#888">
+<section id="extras" class="section" data-category="extras">
   <div class="section-header">
     <span class="section-label">Complementos</span>
     <h2 class="section-title">Extras &amp; Adicionales</h2>
@@ -1148,40 +812,40 @@
   </div>
 </section>
 
-</main>
+    <section class="empty-state" id="emptyState" hidden aria-live="polite">
+      <span aria-hidden="true">🍨</span>
+      <h2>No encontramos productos</h2>
+      <p>Prueba con otra palabra o revisa otra categoría.</p>
+      <button id="resetFilters" type="button">Ver todo el menú</button>
+    </section>
+  </main>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <strong>Heladeria Rosinelda</strong>
-  Gracias por visitarnos · Precios incluyen impuestos
-  <br><br>
-  <span style="color:rgba(255,255,255,0.3);font-size:10px;">© 2026 Johan Terán. Todos los derechos reservados.</span>
-</footer>
+  <footer class="footer">
+    <strong>Heladería Rosinelda</strong>
+    <span>Gracias por visitarnos · Precios incluyen impuestos</span>
+    <small>© 2026 Johan Terán. Todos los derechos reservados.</small>
+  </footer>
 
-<script>
-  function showSection(id, btn) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    btn.classList.add('active');
-    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    window.scrollTo({ top: document.querySelector('.nav-wrapper').offsetTop - 1, behavior: 'smooth' });
-  }
-</script>
-<script>
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Volver arriba" title="Volver arriba">
+    <span aria-hidden="true">↑</span>
+  </button>
 
-const topBar = document.getElementById("topBar");
+  <dialog class="product-modal" id="productModal" aria-labelledby="modalProductName">
+    <div class="modal-panel">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Cerrar detalle del producto">×</button>
+      <div class="modal-visual" id="modalVisual" aria-hidden="true">
+        <span class="modal-icon" id="modalIcon"></span>
+        <img id="modalImage" alt="" hidden>
+      </div>
+      <div class="modal-copy">
+        <span class="modal-badge" id="modalBadge" hidden></span>
+        <h2 id="modalProductName"></h2>
+        <p id="modalProductDescription"></p>
+        <strong class="modal-price" id="modalProductPrice"></strong>
+      </div>
+    </div>
+  </dialog>
 
-window.addEventListener("scroll", () => {
-
-  if (window.scrollY > 80) {
-    topBar.classList.add("compact");
-  } else {
-    topBar.classList.remove("compact");
-  }
-
-});
-
-</script>
+  <script src="js/app.js" defer></script>
 </body>
 </html>
