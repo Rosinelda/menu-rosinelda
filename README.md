@@ -1,4 +1,4 @@
-# Menú digital Rosinelda
+﻿# Menú digital Rosinelda
 
 Versión estática del menú de Heladería Rosinelda, pensada principalmente para abrirse desde un código QR. No necesita instalar programas ni ejecutar comandos: está hecha con HTML, CSS y JavaScript puro, por lo que puede publicarse directamente en GitHub Pages.
 
@@ -13,7 +13,7 @@ Rosinelda_Github/
 │   └── app.js                 Categorías, búsqueda, filtros, modal e imágenes
 ├── assets/
 │   ├── logo/
-│   │   └── Rosinelda-original.png
+│   │   └── Rosinelda-original.svg
 │   └── products/
 │       ├── helados/
 │       ├── especiales/
@@ -48,18 +48,122 @@ Abre `index.html` y busca el nombre del producto. Cada producto mantiene esta es
 
 ## Agregar fotografías
 
-Coloca cada fotografía en la carpeta de su categoría. El sitio intenta encontrar automáticamente una imagen JPG usando el nombre del producto en minúsculas, sin tildes y con guiones.
+Guarda las fotografías en formato PNG con **exactamente** estas rutas y nombres. El menú las detecta automáticamente; si no encuentra una, muestra el icono del producto como respaldo.
 
-Ejemplos:
+> Importante: respeta minúsculas, guiones y la extensión `\.png`. GitHub Pages distingue entre mayúsculas y minúsculas.
+
+### Heladería
 
 ```text
-assets/products/helados/copa-simple.jpg
-assets/products/helados/copa-doble.jpg
-assets/products/especiales/copa-rosinelda.jpg
-assets/products/cafeteria/cappuccino.jpg
+assets/products/helados/copa-simple\.png
+assets/products/helados/copa-doble\.png
+assets/products/helados/copa-triple\.png
+assets/products/helados/tulipan-simple\.png
+assets/products/helados/tulipan-doble\.png
+assets/products/helados/tulipan-triple\.png
+assets/products/helados/cono-simple\.png
+assets/products/helados/cono-doble\.png
+assets/products/helados/cono-triple\.png
 ```
 
-Si la fotografía no existe, el menú muestra el icono del producto en un placeholder; no se verán imágenes rotas. Cuando exista, aparecerá en la tarjeta y en el modal de detalle.
+### Especiales
+
+```text
+assets/products/especiales/copa-rosinelda\.png
+assets/products/especiales/copa-amor\.png
+assets/products/especiales/copa-tropical\.png
+assets/products/especiales/chocobanana\.png
+assets/products/especiales/megabanana\.png
+assets/products/especiales/tulipan-fiesta\.png
+assets/products/especiales/payaso-galleta\.png
+assets/products/especiales/frozen-de-chocolate\.png
+assets/products/especiales/frappe-oreo\.png
+assets/products/especiales/waffle\.png
+```
+
+### Frutería
+
+```text
+assets/products/fruteria/ensalada-de-frutas\.png
+assets/products/fruteria/banana-split\.png
+assets/products/fruteria/duraznos-con-crema\.png
+assets/products/fruteria/frutillas-con-crema\.png
+assets/products/fruteria/copa-frisky\.png
+```
+
+### Cafetería
+
+```text
+assets/products/cafeteria/expreso\.png
+assets/products/cafeteria/expreso-doble\.png
+assets/products/cafeteria/expreso-cortado\.png
+assets/products/cafeteria/cafe-con-leche\.png
+assets/products/cafeteria/cafe-bombon\.png
+assets/products/cafeteria/cappuccino\.png
+assets/products/cafeteria/cappuccino-vienes\.png
+assets/products/cafeteria/macchiato\.png
+assets/products/cafeteria/mochaccino\.png
+assets/products/cafeteria/expreso-frio\.png
+assets/products/cafeteria/frozen-de-chocolate\.png
+assets/products/cafeteria/frozen-de-vainilla\.png
+assets/products/cafeteria/hollywood-shake\.png
+assets/products/cafeteria/te-verde-y-de-frutas\.png
+assets/products/cafeteria/aromaticas\.png
+```
+
+`expreso\.png` corresponde al Expreso clásico y `expreso-frio\.png` al Expreso servido con hielo y leche fría.
+
+### Granizados
+
+```text
+assets/products/granizados/granizado-de-sabores\.png
+assets/products/granizados/granizado-de-frutas-naturales\.png
+assets/products/granizados/granizado-de-yogurt\.png
+```
+
+### Sándwiches
+
+```text
+assets/products/sandwiches/sandwich-de-pollo\.png
+assets/products/sandwiches/sandwich-de-pavo\.png
+assets/products/sandwiches/sandwich-atun\.png
+assets/products/sandwiches/sandwich-texano\.png
+assets/products/sandwiches/tostada-de-jamon\.png
+assets/products/sandwiches/tostada-de-queso\.png
+assets/products/sandwiches/tostada-mixta\.png
+```
+
+### Panadería
+
+```text
+assets/products/panaderia/pan-de-leche\.png
+assets/products/panaderia/quesadilla\.png
+assets/products/panaderia/empanadas-de-carne-o-pollo\.png
+assets/products/panaderia/empanada\.png
+assets/products/panaderia/pan-de-yuca\.png
+assets/products/panaderia/croissant-de-jamon-y-queso\.png
+```
+
+### Extras
+
+```text
+assets/products/extras/chocolate-rallado\.png
+assets/products/extras/granola\.png
+assets/products/extras/nueces-tostadas\.png
+assets/products/extras/sprinkles\.png
+assets/products/extras/caramelo\.png
+assets/products/extras/chocolate-caliente\.png
+assets/products/extras/coulis-de-fresa\.png
+assets/products/extras/chicles-surtidos\.png
+assets/products/extras/suspiros\.png
+assets/products/extras/galleta-del-dia\.png
+assets/products/extras/crema-chantilly\.png
+assets/products/extras/leche-condensada\.png
+assets/products/extras/coco-rallado\.png
+assets/products/extras/bola-extra-de-helado\.png
+```
+
+Cuando exista la fotografía, aparecerá en la tarjeta y también en el modal de detalle.
 
 Para usar una foto con un nombre o extensión diferente, añade `data-image` a la tarjeta:
 
@@ -71,13 +175,13 @@ La primera imagen del menú puede tardar apenas un momento en cargarse; las dem�
 
 ## Agregar el logo oficial
 
-El archivo base recibido solo referenciaba el logo, pero no incluía la imagen. Copia el logo oficial con este nombre y ruta exactos:
+El encabezado está preparado para un logo SVG transparente, sin círculo, fondo blanco ni borde. Copia el logo oficial con este nombre y ruta exactos:
 
 ```text
-assets/logo/Rosinelda-original.png
+assets/logo/Rosinelda-original.svg
 ```
 
-Hasta que se agregue, la cabecera muestra una "R" como reemplazo visual, sin iconos de imagen rota.
+El SVG se adapta sin deformarse y se muestra más grande tanto en móvil como en escritorio. Hasta que se agregue, la cabecera muestra una "R" como reemplazo visual, sin iconos de imagen rota.
 
 ## Agregar una categoría
 
@@ -105,3 +209,4 @@ Se conservaron los textos tal como estaban en el archivo original. Conviene revi
 - `Frappe Oreo`
 
 No se modificaron esas descripciones para no inventar información comercial.
+

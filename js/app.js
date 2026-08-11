@@ -67,7 +67,7 @@
     if (specifiedImage) return specifiedImage;
 
     const folder = imageFolders[category] || category;
-    return `assets/products/${folder}/${slugify(name)}.jpg`;
+    return `assets/products/${folder}/${slugify(name)}.png`;
   }
 
   function createElement(tagName, className, text) {
@@ -294,9 +294,15 @@
     navLinks[(currentIndex + direction + navLinks.length) % navLinks.length].focus();
   }
 
-  brandLogo.addEventListener("error", () => {
+  const showLogoFallback = () => {
     brandLogo.hidden = true;
-  });
+    brandLogo.closest(".logo-shell")?.classList.add("logo-missing");
+  };
+
+  brandLogo.addEventListener("error", showLogoFallback);
+  if (brandLogo.complete && brandLogo.naturalWidth === 0) {
+    showLogoFallback();
+  }
 
   searchInput.addEventListener("input", () => {
     state.query = normalize(searchInput.value.trim());

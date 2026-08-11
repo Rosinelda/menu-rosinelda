@@ -135,14 +135,14 @@ img {
   position: relative;
   display: grid;
   flex: 0 0 auto;
-  width: 58px;
-  height: 58px;
-  overflow: hidden;
+  width: clamp(76px, 22vw, 112px);
+  height: 68px;
+  overflow: visible;
   color: var(--pink);
-  background: var(--cream);
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  border-radius: 50%;
-  box-shadow: 0 5px 12px rgba(83, 17, 48, 0.15);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
   place-items: center;
   transition: width 220ms ease, height 220ms ease;
 }
@@ -152,7 +152,8 @@ img {
   z-index: 1;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: left center;
 }
 
 .logo-fallback {
@@ -162,7 +163,12 @@ img {
   font-family: "Playfair Display", Georgia, serif;
   font-size: 2rem;
   font-weight: 700;
+  visibility: hidden;
   place-items: center;
+}
+
+.logo-shell.logo-missing .logo-fallback {
+  visibility: visible;
 }
 
 .brand-text {
@@ -209,7 +215,7 @@ img {
 }
 
 .compact .logo-shell {
-  width: 42px;
+  width: 72px;
   height: 42px;
 }
 
@@ -804,6 +810,11 @@ main {
   .brand-tagline {
     max-width: none;
     font-size: 1rem;
+  }
+
+  .logo-shell {
+    width: 132px;
+    height: 78px;
   }
 
   .menu-tools {
