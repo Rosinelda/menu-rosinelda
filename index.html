@@ -1,0 +1,851 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e91e72">
+  <meta name="description" content="Menú digital de Heladería Rosinelda: helados, cafetería, frutería y más.">
+  <title>Rosinelda | Menú digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#menu-content">Saltar al menú</a>
+
+  <div class="top-bar" id="topBar">
+    <header class="site-header">
+      <a class="brand" href="#helados" aria-label="Ir al inicio del menú Rosinelda">
+        <span class="logo-shell" aria-hidden="true">
+          <img id="brandLogo" src="assets/logo/Rosinelda-original.png" alt="" width="64" height="64">
+          <span class="logo-fallback">R</span>
+        </span>
+        <span class="brand-text">
+          <strong class="brand-name">Rosinelda</strong>
+          <span class="brand-subtitle">Heladería · Frutería · Cafetería</span>
+        </span>
+      </a>
+      <p class="brand-tagline">El placer de saborear</p>
+    </header>
+
+    <nav class="nav-wrapper" aria-label="Categorías del menú">
+      <div class="nav-scroll" role="tablist" aria-label="Categorías">
+        <a class="nav-btn active" href="#helados" data-category="helados" role="tab" aria-selected="true"><span class="nav-dot" aria-hidden="true"></span>Heladería</a>
+        <a class="nav-btn" href="#especiales" data-category="especiales" role="tab" aria-selected="false"><span class="nav-dot" aria-hidden="true"></span>Especiales</a>
+        <a class="nav-btn" href="#fruteria" data-category="fruteria" role="tab" aria-selected="false"><span class="nav-dot" aria-hidden="true"></span>Frutería</a>
+        <a class="nav-btn" href="#cafeteria" data-category="cafeteria" role="tab" aria-selected="false"><span class="nav-dot" aria-hidden="true"></span>Cafetería</a>
+        <a class="nav-btn" href="#granizados" data-category="granizados" role="tab" aria-selected="false"><span class="nav-dot" aria-hidden="true"></span>Granizados</a>
+        <a class="nav-btn" href="#sandwiches" data-category="sandwiches" role="tab" aria-selected="false"><span class="nav-dot" aria-hidden="true"></span>Sándwiches</a>
+        <a class="nav-btn" href="#panaderia" data-category="panaderia" role="tab" aria-selected="false"><span class="nav-dot" aria-hidden="true"></span>Panadería</a>
+        <a class="nav-btn" href="#extras" data-category="extras" role="tab" aria-selected="false"><span class="nav-dot" aria-hidden="true"></span>Extras</a>
+      </div>
+    </nav>
+  </div>
+
+  <section class="menu-tools" aria-label="Buscar y filtrar productos">
+    <div class="tools-inner">
+      <label class="search-field" for="menuSearch">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <span class="sr-only">Buscar en el menú</span>
+        <input id="menuSearch" type="search" placeholder="Buscar en el menú..." autocomplete="off">
+        <button class="clear-search" id="clearSearch" type="button" aria-label="Limpiar búsqueda" hidden>×</button>
+      </label>
+      <button class="featured-filter" id="featuredFilter" type="button" aria-pressed="false">Destacados</button>
+    </div>
+    <p class="search-summary" id="searchSummary" aria-live="polite"></p>
+  </section>
+
+  <main id="menu-content">
+
+<!-- ═══════════════════ HELADOS ═══════════════════ -->
+<section id="helados" class="section active" data-category="helados">
+  <div class="section-header">
+    <span class="section-label">Nuestra especialidad</span>
+    <h2 class="section-title">Helados Clásicos</h2>
+    <p class="section-desc">Cremosos, intensos y elaborados con los mejores ingredientes. La experiencia que te enamoró.</p>
+  </div>
+  <div class="products">
+
+    <div class="cat-divider"><span>Copas</span></div>
+
+    <div class="card">
+      <div class="card-icon">🍨</div>
+      <div class="card-body">
+        <p class="card-name">Copa Simple</p>
+        <p class="card-desc">Deliciosa copa con un sabor de helado artesanal</p>
+      </div>
+      <span class="card-price">$1.00</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍦</div>
+      <div class="card-body">
+        <p class="card-name">Copa Doble</p>
+        <p class="card-desc">copa de 2 sabores de helado 100% natural</p>
+      </div>
+      <span class="card-price">$1.80</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍮</div>
+      <div class="card-body">
+        <p class="card-name">Copa Triple</p>
+        <p class="card-desc">Tres deliciosos sabores de helado servidos en copa</p>
+      </div>
+      <span class="card-price">$2.75</span>
+    </div>
+
+    <div class="cat-divider"><span>Tulipanes</span></div>
+
+    <div class="card">
+      <div class="card-icon">🍦</div>
+      <div class="card-body">
+        <p class="card-name">Tulipán Simple</p>
+        <p class="card-desc">Galleta crocante con un sabor de helado artesanal</p>
+      </div>
+      <span class="card-price">$1.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍦</div>
+      <div class="card-body">
+        <p class="card-name">Tulipán Doble</p>
+        <p class="card-desc">Galleta crocante con dos sabores de helado a elección</p>
+      </div>
+      <span class="card-price">$2.00</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🧁</div>
+      <div class="card-body">
+        <p class="card-name">Tulipán Triple</p>
+        <p class="card-desc">Tres sabores de helado servidos en galleta crocante</p>
+      </div>
+      <span class="card-price">$3.00</span>
+    </div>
+
+    <div class="cat-divider"><span>Conos</span></div>
+
+    <div class="card">
+      <div class="card-icon">🥤</div>
+      <div class="card-body">
+        <p class="card-name">Cono Simple</p>
+        <p class="card-desc">Cono de galleta crocante con un sabor de helado artesanal</p>
+      </div>
+      <span class="card-price">$1.00</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥤</div>
+      <div class="card-body">
+        <p class="card-name">Cono Doble</p>
+        <p class="card-desc">Cono de galleta con dos sabores de helado a elección</p>
+      </div>
+      <span class="card-price">$1.80</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍓</div>
+      <div class="card-body">
+        <p class="card-name">Cono Triple</p>
+        <p class="card-desc">Tres sabores de helado en un deliciosu cono crocante</p>
+      </div>
+      <span class="card-price">$2.75</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ ESPECIALES ═══════════════════ -->
+<section id="especiales" class="section" data-category="especiales">
+  <div class="section-header">
+    <span class="section-label">Exclusivo de la casa</span>
+    <h2 class="section-title">Creaciones Especiales</h2>
+    <p class="section-desc">Postres elaborados con técnica y pasión. Cada copa es una experiencia única que no encontrarás en otro lugar.</p>
+  </div>
+  <div class="products">
+
+    <div class="cat-divider"><span>Copas Gourmet</span></div>
+
+    <div class="card">
+      <div class="card-icon">🍫</div>
+      <div class="card-body">
+        <p class="card-name">Copa Rosinelda</p>
+        <p class="card-desc">Helado de oreo, salsa de chocolate negro y crema de vainilla francesa</p>
+      </div>
+      <span class="card-badge">Firma</span>
+      <span class="card-price">$5.00</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍒</div>
+      <div class="card-body">
+        <p class="card-name">Copa Amor</p>
+        <p class="card-desc">Helado de frutilla, coulis de cereza, merengue y pistachos</p>
+      </div>
+      <span class="card-price">$4.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥜</div>
+      <div class="card-body">
+        <p class="card-name">Copa Tropical</p>
+        <p class="card-desc">Helado de avellana, nutella caliente, galleta oreo triturada y avellanas</p>
+      </div>
+      <span class="card-badge">Top</span>
+      <span class="card-price">$5.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍋</div>
+      <div class="card-body">
+        <p class="card-name">Chocobanana</p>
+        <p class="card-desc">Sorbete de limón, espuma de jengibre y menta fresca sobre cama de galleta</p>
+      </div>
+      <span class="card-price">$4.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🎂</div>
+      <div class="card-body">
+        <p class="card-name">Megabanana</p>
+        <p class="card-desc">Capas de helado, bizcocho, gelatina de maracuyá y crema diplomática</p>
+      </div>
+      <span class="card-badge">Chef</span>
+      <span class="card-price">$6.00</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍰</div>
+      <div class="card-body">
+        <p class="card-name">Tulipán Fiesta</p>
+        <p class="card-desc">Bizcocho de chocolate con helado de vainilla, sirope y almendras fileteadas</p>
+      </div>
+      <span class="card-price">$5.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌹</div>
+      <div class="card-body">
+        <p class="card-name">Payaso Galleta</p>
+        <p class="card-desc">Helado artesanal de guayaba, gelatina rosada, leche condensada y coco rallado</p>
+      </div>
+      <span class="card-price">$4.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🫐</div>
+      <div class="card-body">
+        <p class="card-name">Frozen de Chocolate</p>
+        <p class="card-desc">Helado de mora silvestre, salsa de arándanos, crumble de galleta negra</p>
+      </div>
+      <span class="card-badge">New</span>
+      <span class="card-price">$5.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥭</div>
+      <div class="card-body">
+        <p class="card-name">Frappe Oreo</p>
+        <p class="card-desc">Sorbetes de mango, maracuyá y coco con chips de coco tostado</p>
+      </div>
+      <span class="card-price">$5.00</span>
+    </div>
+
+    <div class="cat-divider"><span>Nuevos Productos</span></div>
+   <div class="card">
+      <div class="card-icon">🥭</div>
+      <div class="card-body">
+        <p class="card-name">Waffle</p>
+        <p class="card-desc">Sorbetes de mango, maracuyá y coco con chips de coco tostado</p>
+      </div>
+      <span class="card-price">$5.00</span>
+    </div>
+
+   
+  </div>
+</section>
+
+<!-- ═══════════════════ FRUTERÍA ═══════════════════ -->
+<section id="fruteria" class="section" data-category="fruteria">
+  <div class="section-header">
+    <span class="section-label">Frescura natural</span>
+    <h2 class="section-title">Frutería</h2>
+    <p class="section-desc">Lo mejor de la naturaleza en tu mesa. Frutas seleccionadas, frescas y con la presentación que mereces.</p>
+  </div>
+  <div class="products">
+
+    <div class="card">
+      <div class="card-icon">🍓</div>
+      <div class="card-body">
+        <p class="card-name">Ensalada de Frutas</p>
+        <p class="card-desc">Mix de frutas frescas de temporada, jugo de naranja natural y menta</p>
+      </div>
+      <span class="card-price">$2.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍌</div>
+      <div class="card-body">
+        <p class="card-name">Banana Split</p>
+        <p class="card-desc">Plátano fresco, tres bolas de helado, crema, chocolate y fresa</p>
+      </div>
+      <span class="card-badge">Clásico</span>
+      <span class="card-price">$4.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍍</div>
+      <div class="card-body">
+        <p class="card-name">Duraznos con Crema</p>
+        <p class="card-desc">Piña, mango y papaya con leche condensada y coco rallado tostado</p>
+      </div>
+      <span class="card-price">$3.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🫐</div>
+      <div class="card-body">
+        <p class="card-name">Frutillas con Crema</p>
+        <p class="card-desc">Fresas, moras y arándanos con crema chantilly y granola crujiente</p>
+      </div>
+      <span class="card-price">$3.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥝</div>
+      <div class="card-body">
+        <p class="card-name">Copa Frisky</p>
+        <p class="card-desc">Tu fruta favorita servida sobre una bola de helado de nata o vainilla</p>
+      </div>
+      <span class="card-price">$3.00</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ CAFETERÍA ═══════════════════ -->
+<section id="cafeteria" class="section" data-category="cafeteria">
+  <div class="section-header">
+    <span class="section-label">Café de especialidad</span>
+    <h2 class="section-title">Cafetería</h2>
+    <p class="section-desc">Granos seleccionados, técnica precisa y ese aroma que hace que el día valga la pena.</p>
+  </div>
+  <div class="products">
+
+    <div class="cat-divider"><span>Cafés Clásicos</span></div>
+
+    <div class="card">
+      <div class="card-icon">☕</div>
+      <div class="card-body">
+        <p class="card-name">Expreso</p>
+        <p class="card-desc">Solo, puro e intenso. La base de todo gran café</p>
+      </div>
+      <span class="card-price">$1.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">☕</div>
+      <div class="card-body">
+        <p class="card-name">Expreso Doble</p>
+        <p class="card-desc">Doble shot para los amantes del café intenso</p>
+      </div>
+      <span class="card-price">$1.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍵</div>
+      <div class="card-body">
+        <p class="card-name">Expreso Cortado</p>
+        <p class="card-desc">Espresso diluido con agua caliente, suave y aromático</p>
+      </div>
+      <span class="card-price">$1.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥛</div>
+      <div class="card-body">
+        <p class="card-name">Café con Leche</p>
+        <p class="card-desc">Espresso con leche entera vaporizada al punto perfecto</p>
+      </div>
+      <span class="card-price">$1.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">☕</div>
+      <div class="card-body">
+        <p class="card-name">Café Bombón</p>
+        <p class="card-desc">Espresso, leche vaporizada y espuma densa. El clásico italiano</p>
+      </div>
+      <span class="card-badge">Popular</span>
+      <span class="card-price">$2.25</span>
+    </div>
+
+    <div class="cat-divider"><span>Cafés Especiales</span></div>
+    
+    <div class="card">
+      <div class="card-icon">🍶</div>
+      <div class="card-body">
+        <p class="card-name">Cappuccino</p>
+        <p class="card-desc">Espresso con abundante leche vaporizada y latte art</p>
+      </div>
+      <span class="card-price">$2.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍫</div>
+      <div class="card-body">
+        <p class="card-name">Cappuccino Vienés</p>
+        <p class="card-desc">Espresso con chocolate caliente, leche vaporizada y crema</p>
+      </div>
+      <span class="card-price">$2.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <div class="card-body">
+        <p class="card-name">Macchiato</p>
+        <p class="card-desc">Matcha ceremonial japonés con leche de avena vaporizada</p>
+      </div>
+      <span class="card-badge">Nuevo</span>
+      <span class="card-price">$3.00</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🧊</div>
+      <div class="card-body">
+        <p class="card-name">Mochaccino</p>
+        <p class="card-desc">Café extractado en frío durante 12 horas. Suave y concentrado</p>
+      </div>
+      <span class="card-price">$2.75</span>
+    </div>
+
+    <div class="cat-divider"><span>Cafés Fríos</span></div>
+
+    <div class="card">
+      <div class="card-icon">🧊</div>
+      <div class="card-body">
+        <p class="card-name">Expreso</p>
+        <p class="card-desc">Espresso sobre hielo con leche fría. Refrescante y elegante</p>
+      </div>
+      <span class="card-price">$2.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🧊</div>
+      <div class="card-body">
+        <p class="card-name">Frozen de Chocolate</p>
+        <p class="card-desc">Espresso, chocolate, hielo y leche. Dulce y refrescante</p>
+      </div>
+      <span class="card-price">$2.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍵</div>
+      <div class="card-body">
+        <p class="card-name">Frozen de Vainilla</p>
+        <p class="card-desc">Chocolate belga derretido con leche entera y canela</p>
+      </div>
+      <span class="card-price">$2.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🫖</div>
+      <div class="card-body">
+        <p class="card-name">Hollywood Shake</p>
+        <p class="card-desc">Selección de tés premium. English Breakfast, Earl Grey o Darjeeling</p>
+      </div>
+      <span class="card-price">$1.50</span>
+    </div>
+
+    <div class="cat-divider"><span>Tés e Infusiones</span></div>
+
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <div class="card-body">
+        <p class="card-name">Té Verde y de Frutas</p>
+        <p class="card-desc">Manzanilla, menta o jengibre con limón. Natural y relajante</p>
+      </div>
+      <span class="card-price">$1.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥜</div>
+      <div class="card-body">
+        <p class="card-name">Aromaticas</p>
+        <p class="card-desc">Especias indias, té negro y leche vaporizada. Cálido y especiado</p>
+      </div>
+      <span class="card-price">$2.75</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ GRANIZADOS ═══════════════════ -->
+<section id="granizados" class="section" data-category="granizados">
+  <div class="section-header">
+    <span class="section-label">Refrescantes</span>
+    <h2 class="section-title">Granizados</h2>
+    <p class="section-desc">Fríos, coloridos y perfectos para el calor. Puro sabor en cada sorbo.</p>
+  </div>
+  <div class="products">
+
+    <div class="card">
+      <div class="card-icon">🧊</div>
+      <div class="card-body">
+        <p class="card-name">Granizado de Sabores</p>
+        <p class="card-desc">Hielo triturado con sirope artesanal de frutas naturales. Sin colorantes</p>
+      </div>
+      <span class="card-price">$1.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍋</div>
+      <div class="card-body">
+        <p class="card-name">Granizado de Frutas naturales</p>
+        <p class="card-desc">Limón fresco, menta y hielo triturado. Refrescante y ácido</p>
+      </div>
+      <span class="card-badge">Top</span>
+      <span class="card-price">$1.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍓</div>
+      <div class="card-body">
+        <p class="card-name">Granizado de Yogurt</p>
+        <p class="card-desc">Hielo con sabores mixtos, leche condensada y frutas frescas</p>
+      </div>
+      <span class="card-price">$2.25</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ SÁNDWICHES ═══════════════════ -->
+<section id="sandwiches" class="section" data-category="sandwiches">
+  <div class="section-header">
+    <span class="section-label">Salado premium</span>
+    <h2 class="section-title">Sándwiches</h2>
+    <p class="section-desc">Rellenos generosos, pan artesanal y sabores que no decepcionan. Perfectos para acompañar tu café.</p>
+  </div>
+  <div class="products">
+
+    <div class="card">
+      <div class="card-icon">🥪</div>
+      <div class="card-body">
+        <p class="card-name">Sándwich de Pollo</p>
+        <p class="card-desc">Pan artesanal, jamón ahumado, queso gouda y mostaza dijon</p>
+      </div>
+      <span class="card-price">$2.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥪</div>
+      <div class="card-body">
+        <p class="card-name">Sándwich de Pavo</p>
+        <p class="card-desc">Triple capa con pollo, tocino, lechuga, tomate y mayonesa casera</p>
+      </div>
+      <span class="card-badge">Popular</span>
+      <span class="card-price">$3.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥑</div>
+      <div class="card-body">
+        <p class="card-name">Sándwich Atún</p>
+        <p class="card-desc">Aguacate, queso crema, espinacas y tomate cherry en pan integral</p>
+      </div>
+      <span class="card-price">$3.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🧀</div>
+      <div class="card-body">
+        <p class="card-name">Sándwich Texano</p>
+        <p class="card-desc">Mezcla de tres quesos fundidos en pan de masa madre artesanal</p>
+      </div>
+      <span class="card-price">$2.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍗</div>
+      <div class="card-body">
+        <p class="card-name">Tostada de Jamón</p>
+        <p class="card-desc">Pollo a la plancha, cebolla caramelizada, lechuga y salsa especial</p>
+      </div>
+      <span class="card-price">$3.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥩</div>
+      <div class="card-body">
+        <p class="card-name">Tostada de Queso</p>
+        <p class="card-desc">Jamón, queso y mortadela fundidos en plancha con orégano</p>
+      </div>
+      <span class="card-price">$2.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <div class="card-body">
+        <p class="card-name">Tostada Mixta</p>
+        <p class="card-desc">Mozzarella fresca, tomate, albahaca y aceite de oliva en ciabatta</p>
+      </div>
+      <span class="card-badge">Nuevo</span>
+      <span class="card-price">$3.75</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ PANADERÍA ═══════════════════ -->
+<section id="panaderia" class="section" data-category="panaderia">
+  <div class="section-header">
+    <span class="section-label">Recién horneado</span>
+    <h2 class="section-title">Panadería</h2>
+    <p class="section-desc">El aroma de lo recién hecho. Preparaciones artesanales con recetas que pasan de generación en generación.</p>
+  </div>
+  <div class="products">
+
+    <div class="card">
+      <div class="card-icon">🫓</div>
+      <div class="card-body">
+        <p class="card-name">Pan de Leche</p>
+        <p class="card-desc">Pan artesanal recién horneado. Corteza crujiente, miga suave</p>
+      </div>
+      <span class="card-price">$0.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🧀</div>
+      <div class="card-body">
+        <p class="card-name">Quesadilla</p>
+        <p class="card-desc">Masa de maíz artesanal con queso fundido y hierbas frescas</p>
+      </div>
+      <span class="card-badge">Favorito</span>
+      <span class="card-price">$1.00</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥐</div>
+      <div class="card-body">
+        <p class="card-name">Empanadas de Carne o Pollo</p>
+        <p class="card-desc">Hojaldre laminado a mano con mantequilla europea. Dorado y crujiente</p>
+      </div>
+      <span class="card-price">$1.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥟</div>
+      <div class="card-body">
+        <p class="card-name">Empanada</p>
+        <p class="card-desc">Masa artesanal rellena de queso, carne o espinacas. Horneada al momento</p>
+      </div>
+      <span class="card-price">$1.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍞</div>
+      <div class="card-body">
+        <p class="card-name">Pan de Yuca</p>
+        <p class="card-desc">Tradicional ecuatoriano, esponjoso y con queso. Receta de la abuela</p>
+      </div>
+      <span class="card-price">$0.75</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥐</div>
+      <div class="card-body">
+        <p class="card-name">Croissant de Jamón y Queso</p>
+        <p class="card-desc">Croissant hojaldrado relleno con jamón ahumado y queso derretido</p>
+      </div>
+      <span class="card-price">$2.00</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ EXTRAS ═══════════════════ -->
+<section id="extras" class="section" data-category="extras">
+  <div class="section-header">
+    <span class="section-label">Complementos</span>
+    <h2 class="section-title">Extras &amp; Adicionales</h2>
+    <p class="section-desc">Los pequeños detalles que hacen grande tu pedido. Personaliza tu experiencia con nuestros toppings y complementos.</p>
+  </div>
+  <div class="products">
+
+    <div class="cat-divider"><span>Toppings</span></div>
+
+    <div class="card">
+      <div class="card-icon">🍫</div>
+      <div class="card-body">
+        <p class="card-name">Chocolate Rallado</p>
+        <p class="card-desc">Chocolate belga negro o con leche, rallado fino</p>
+      </div>
+      <span class="card-price">$0.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥜</div>
+      <div class="card-body">
+        <p class="card-name">Granola</p>
+        <p class="card-desc">Granola artesanal con avena, miel y frutos secos tostados</p>
+      </div>
+      <span class="card-price">$0.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌰</div>
+      <div class="card-body">
+        <p class="card-name">Nueces Tostadas</p>
+        <p class="card-desc">Nueces y almendras tostadas ligeramente saladas</p>
+      </div>
+      <span class="card-price">$0.50</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍭</div>
+      <div class="card-body">
+        <p class="card-name">Sprinkles</p>
+        <p class="card-desc">Confites de colores para decorar tu helado o postre</p>
+      </div>
+      <span class="card-price">$0.15</span>
+    </div>
+
+    <div class="cat-divider"><span>Salsas</span></div>
+
+    <div class="card">
+      <div class="card-icon">🍯</div>
+      <div class="card-body">
+        <p class="card-name">Caramelo</p>
+        <p class="card-desc">Salsa de caramelo casera, suave y mantecosa</p>
+      </div>
+      <span class="card-price">$0.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍫</div>
+      <div class="card-body">
+        <p class="card-name">Chocolate Caliente</p>
+        <p class="card-desc">Sirope de chocolate intenso para cobertura</p>
+      </div>
+      <span class="card-price">$0.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍓</div>
+      <div class="card-body">
+        <p class="card-name">Coulis de Fresa</p>
+        <p class="card-desc">Salsa de fresa natural, ligeramente ácida y muy aromática</p>
+      </div>
+      <span class="card-price">$0.25</span>
+    </div>
+
+    <div class="cat-divider"><span>Pequeños Antojos</span></div>
+
+    <div class="card">
+      <div class="card-icon">🍬</div>
+      <div class="card-body">
+        <p class="card-name">Chicles Surtidos</p>
+        <p class="card-desc">Variedad de chicles en sabores frutales</p>
+      </div>
+      <span class="card-price">$0.10</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍭</div>
+      <div class="card-body">
+        <p class="card-name">Suspiros</p>
+        <p class="card-desc">Merengue artesanal en colores pastel. Ligeros y dulces</p>
+      </div>
+      <span class="card-price">$0.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍪</div>
+      <div class="card-body">
+        <p class="card-name">Galleta del Día</p>
+        <p class="card-desc">Galleta artesanal horneada en casa. Sabor varía según el día</p>
+      </div>
+      <span class="card-price">$0.50</span>
+    </div>
+
+    <div class="cat-divider"><span>Cremas</span></div>
+
+    <div class="card">
+      <div class="card-icon">🥛</div>
+      <div class="card-body">
+        <p class="card-name">Crema Chantilly</p>
+        <p class="card-desc">Crema batida natural, suave y apenas dulce</p>
+      </div>
+      <span class="card-price">$0.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🫙</div>
+      <div class="card-body">
+        <p class="card-name">Leche Condensada</p>
+        <p class="card-desc">Leche condensada para añadir dulzura extra a cualquier postre</p>
+      </div>
+      <span class="card-price">$0.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🥥</div>
+      <div class="card-body">
+        <p class="card-name">Coco Rallado</p>
+        <p class="card-desc">Coco tostado rallado para un toque tropical</p>
+      </div>
+      <span class="card-price">$0.25</span>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍦</div>
+      <div class="card-body">
+        <p class="card-name">Bola Extra de Helado</p>
+        <p class="card-desc">Añade una bola adicional a cualquier pedido</p>
+      </div>
+      <span class="card-price">$0.75</span>
+    </div>
+
+  </div>
+</section>
+
+    <section class="empty-state" id="emptyState" hidden aria-live="polite">
+      <span aria-hidden="true">🍨</span>
+      <h2>No encontramos productos</h2>
+      <p>Prueba con otra palabra o revisa otra categoría.</p>
+      <button id="resetFilters" type="button">Ver todo el menú</button>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <strong>Heladería Rosinelda</strong>
+    <span>Gracias por visitarnos · Precios incluyen impuestos</span>
+    <small>© 2026 Johan Terán. Todos los derechos reservados.</small>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Volver arriba" title="Volver arriba">
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <dialog class="product-modal" id="productModal" aria-labelledby="modalProductName">
+    <div class="modal-panel">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Cerrar detalle del producto">×</button>
+      <div class="modal-visual" id="modalVisual" aria-hidden="true">
+        <span class="modal-icon" id="modalIcon"></span>
+        <img id="modalImage" alt="" hidden>
+      </div>
+      <div class="modal-copy">
+        <span class="modal-badge" id="modalBadge" hidden></span>
+        <h2 id="modalProductName"></h2>
+        <p id="modalProductDescription"></p>
+        <strong class="modal-price" id="modalProductPrice"></strong>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
